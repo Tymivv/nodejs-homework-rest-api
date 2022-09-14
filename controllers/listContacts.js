@@ -1,17 +1,8 @@
-const contacts = require("../models");
+const { Сontact } = require("../models/contact");
 
 const listContacts = async (_, res) => {
-  const result = await contacts.listContacts();
+  const result = await Сontact.find({}, "-createdAt -updatedAt");
   res.json(result);
 };
 
 module.exports = listContacts;
-
-// const books = require("../../models/books");
-
-// const getAll = async (_, res) => {
-//   const result = await books.getAll();
-//   res.json(result);
-// };
-
-// module.exports = getAll;
