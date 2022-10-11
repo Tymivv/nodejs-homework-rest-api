@@ -11,7 +11,10 @@ const {schemas} = require("../../models/user");
 const router = express.Router();
 
 // signup
-router.post("/register", validateBody(schemas.registerSchema), ctrlWrapper(ctrl.register))
+router.post("/register", validateBody(schemas.registerSchema), ctrlWrapper(ctrl.register));
+router.get("/verify/:verificationToken", ctrlWrapper(ctrl.verifyEmail));
+
+router.post("/verify", validateBody(schemas.verifyEmailSchema), ctrlWrapper(ctrl.resendVerifyEmail));
 
 // signin
 router.post("/login", validateBody(schemas.loginSchema), ctrlWrapper(ctrl.login));
